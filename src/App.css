@@ -28,6 +28,12 @@
   color: #61dafb;
 }
 
+.MuiAppBar-colorDefault	{
+	background-color: black !important;
+	text-align: left;
+	color: white !important;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -35,4 +41,17 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.cardContainer {
+	inline-size: 220px;
+    overflow-wrap: break-word;
+	margin: .5rem;
+	border-style: solid;
+	background-color: rgb(192,192,192,.3);
+	border-radius: 25px;
+}
+
+.cardContainer img {
+	max-height: 300px;
 }

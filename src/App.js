@@ -1,12 +1,40 @@
+import React from 'react';
+import {Provider} from "react-redux"
+import {configureStore} from "./store"
 import './App.css';
-import CardSearch from './CardSearch';
+import Header from './components/Header';
+import Main from './components/Main';
+import { BrowserRouter as Router,
+		Route,
+		Link,
+	   Redirect} from 'react-router-dom';
+import { setAuthorizationToken, setCurrentUser } from "./store/actions/auth";
+import jwtDecode from "jwt-decode";
+
+const store = configureStore()
+
+if(localStorage.jwtToken) {
+	setAuthorizationToken(localStorage.jwtToken);
+	//prevent someone from manually tampering with the key of jwtToken in localStorage
+	try{
+	store.dispatch(setCurrentUser(jwtDecode(localStorage.jwtToken)))
+	} catch(e) {
+		store.dispatch(setCurrentUser({}));
+	}
+}
 
 function App() {
   return (
+	<Provider store={store}>  
+	<Router>
+    <React.Fragment>  
     <div className="App">
-      <p>Welcome to the MTG app</p>
-		  <CardSearch></CardSearch>
+		  <Header></Header>
+		  <Main></Main>
     </div>
+	</React.Fragment>
+	</Router>
+	</Provider>	  
   );
 }
 
