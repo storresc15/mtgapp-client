@@ -46,9 +46,9 @@ export default function DeckMainPanel(props) {
 			{ cards && <p>Cards are contained</p> }
 			<br></br>
 			<Container maxWidth="md">
-          <Grid container spacing={1} columns={{ xs: 4, sm: 8, md: 16 }}>
+          <Grid container spacing={1} columns={{ xs: 4, sm: 8, md: 12 }}>
 			  { cards.map(m => (	
-				<SingleCardDisplay name={m.name} colors={m.colors} type={m.type} imgUrl={m.imgUrl} mid={m.multiverseid} deckId={deckId}/>
+				<SingleCardDisplay name={m.name} colors={m.colors} type={m.type} imgUrl={m.image} mid={m.multiverseid} deckId={deckId}/>
 			)) }
           </Grid>
         </Container>

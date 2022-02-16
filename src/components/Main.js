@@ -29,16 +29,16 @@ const Main = props => {
 	<p>This should be the signup route</p>
 	</Route>		
 		
-	<Route path="/mydecks">  
-	<MyDecks></MyDecks>
+	<Route path="/mydecks" component={withAuth(MyDecks)}>  
+		  { /*<MyDecks></MyDecks>*/ }
 	</Route>
 	
 	<Route path="/communitydecks">  
 	<p>Route for searching other people decks</p>
 	</Route>
 		
-	<Route path="/cardsearch">  
-	<CardSearch></CardSearch>
+	<Route path="/cardsearch" component={withAuth(CardSearch)}>  
+		  {/*<CardSearch></CardSearch>*/}
 	</Route>	
 		
 	<Route path="/news">  
@@ -48,7 +48,6 @@ const Main = props => {
 	<Route path="/myprofile">  
 	<p>The route for profile</p>
 	</Route>		
-	
 	
 	<Route path="/viewdeck/:id" component={withAuth(DeckMain)}>  
 		  {/*<p>The route for a single deck to be displayed</p>

@@ -18,3 +18,20 @@ export const fetchMyDecks = () => {
 				   });
 	};
 }
+
+//Create deck function
+export const createDeck = (data) => {
+	return dispatch => {
+		return new Promise((resolve, reject) => {
+		return apiCall("post", "/decks", data)
+			.then(res => {
+			dispatch(loadDecks(res)); //review response to return decks
+			resolve();
+		})
+		.catch(err => {
+			dispatch(addError(err));
+			reject();
+		})
+	})
+	}
+}

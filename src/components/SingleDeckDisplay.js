@@ -5,14 +5,14 @@ import Grid from '@mui/material/Grid';
 
 
 const SingleDeckDisplay = ({deckId, date, name, description, username}) => {
-	const strId = JSON.stringify(deckId);
+	const strId = deckId; //JSON.stringify(deckId);
 return (
 	<>
 	<Grid item={true}  xs={12} sm={6} md={4} >	
 	<div className = "cardContainer">
 		<h2>{name}</h2>
 		<Link to={{
-				pathname: "/viewdeck/" + {strId},
+				pathname: "/viewdeck/" + strId,
 				state: {
 					deckId: strId,
 					owner: username,

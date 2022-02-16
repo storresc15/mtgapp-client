@@ -10,13 +10,15 @@ import Grid from '@mui/material/Grid';
 
 const SingleCardDisplay = props => {
 	
-	
+	const [isSubmitting, setIsSubmitting] = useState(false); //For disable button
 	const [open, setOpen] = React.useState(false); // For toast
 	const { saveCardsToDeck } = props;
+	const displaySave = props.displaySave;
 	
 
 	const handleSave = () => {
 		console.log('the deck id from handle save: ' + props.deckId);
+		setIsSubmitting(true)
 		saveCardAPICall();
 		
   };
@@ -49,13 +51,13 @@ const SingleCardDisplay = props => {
 		  .then(() => {
 		  console.log('On the then statement on single card display')
 		  setOpen(true);
-		  setTimeout(() => {props.fetchCards(props.deckId)}, 1000);  
+		  setIsSubmitting(false);
+		  //setTimeout(() => {props.fetchCards(props.deckId)}, 1000);  
 	  }).catch(error => {
 		  //THE ERROR SHOULD GO HERE
 		  console.log('We got error message');
+		  setIsSubmitting(false);
 	  })
-	  //props.fetchCards(props.deckId); // To be reviewed
-	  //props.fetchCards(props.deckId); // How to manage execution to only call once
 	  
   };	
 
@@ -66,7 +68,8 @@ const SingleCardDisplay = props => {
 			{props.mid && <p>MTG Multiverse ID: {props.mid}</p> }		
                 <img src={props.imgUrl ? props.imgUrl : "https://media.magic.wizards.com/image_legacy_migration/magic/images/mtgcom/fcpics/making/mr224_back.jpg"} alt=""/>
 				<br/>
-			<Button type="submit" size="large" color="primary" onClick={handleSave}>Save to Deck</Button>
+			{displaySave && <Button type="submit" size="large" color="primary" onClick={handleSave} disabled={isSubmitting}>+ Add to Deck</Button> }
+			
 			<Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
           Card {props.name} succesfully saved!

@@ -31,7 +31,8 @@ export const saveCardsToDeck = (card, deckId) => /*(dispatch, getState)  => */{
 		return new Promise((resolve, reject) => {
 			return apiCall("post", `/decks/${id}/cards`, card )
 		.then(res => {
-			//dispatch(removeError());	
+			//dispatch(removeError());
+			dispatch(loadCards(res));	
 			resolve();
 			})
 		.catch(err => {
