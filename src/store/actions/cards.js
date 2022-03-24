@@ -42,3 +42,22 @@ export const saveCardsToDeck = (card, deckId) => /*(dispatch, getState)  => */{
 		})
 	}
 }
+
+export const removeCardFromDeck = (deckId, data) => {
+	const id = deckId.replace(/^"(.+(?="$))"$/, '$1');
+	
+	return dispatch => {
+		return new Promise((resolve, reject) => {
+			return apiCall("post", `/decks/${id}/cards/remove`, data )
+		.then(res => {
+			//dispatch(removeError());
+			dispatch(loadCards(res));	
+			resolve();
+			})
+		.catch(err => {
+			dispatch(addError(err.message));
+			reject();	
+			});
+		})
+	}
+}

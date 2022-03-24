@@ -16,7 +16,7 @@ import { removeError } from '../store/actions/errors'; //POC for removing errors
 
 const DeckMain = props => {
 	
-	const { deckId, owner, name, description, date } = props.location.state;
+	const { deckId, owner, name, description, date, isCommunity } = props.location.state;
 	const cards = props.cards;
 	const { errors } = props;
 	const [open, setOpen] = React.useState(true);
@@ -57,7 +57,7 @@ return (
 	<Grid container spacing={1}>
 		<Grid item xs={12} md={12}>
 		<h1>{name}</h1>
-		<DeckMainPanel deckId={deckId} owner={owner} name={name} description={description} date={date} cards={cards} />
+		<DeckMainPanel deckId={deckId} owner={owner} name={name} description={description} date={date} cards={cards} isCommunity={isCommunity}/>
 		</Grid>
   </Grid>	
 	</>

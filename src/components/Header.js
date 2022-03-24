@@ -93,16 +93,16 @@ const Header = props => {
           </Typography>
 			{currentUser.isAuthenticated &&
 				<a onClick={handleLogout}>
-				<Button variant="outlined">Logout</Button>
+				<Button color="error" variant="outlined">Logout</Button>
 				</a>
 			}
 			{!currentUser.isAuthenticated &&
 			<div>
 			<Link to='/login' style={{ textDecoration: 'none' }}>
-			<Button variant="outlined">Login</Button>
+			<Button color="success" variant="outlined">Login</Button>
 			</Link>
 			<Link to='/signup' style={{ textDecoration: 'none' }}>
-			<Button variant="outlined">Sign Up</Button>
+			<Button color="success" variant="outlined">Sign Up</Button>
 			</Link>	
 			</div>	 
 			}

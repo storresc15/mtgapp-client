@@ -62,7 +62,7 @@ class CardSearch extends Component {
             <Grid container spacing={4}>		
               {this.state.cards.map((card, index) => (
               <div key={index}>
-			<SingleCardDisplay name={card.name} colors={card.colors} type={card.type} imgUrl={card.imgUrl} mid={card.id} deckId={this.props.deckId} displaySave={true}/>
+			<SingleCardDisplay name={card.name} colors={card.colors} type={card.type} imgUrl={card.imgUrl} mid={card.id} deckId={this.props.deckId} description={card.description} supertypes={card.supertypes} types={card.types} rarity={card.rarity} manaCost={card.manaCost} displaySave={true}/>
               </div>
             ))}
 		</Grid>

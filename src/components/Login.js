@@ -10,12 +10,18 @@ const Login = (props) => {
 	const [isSubmitting, setIsSubmitting] = useState(false)
 	const [suMessage, setSuMessage] = useState("")
 	const [error, setError] = useState("")
+	const [firstName, setFirstName] = useState("")
+	const [lastName, setLastName] = useState("")
 	const [email, setEmail] = useState("")
 	const [password, setPassword] = useState("")
 	const [userContext, setUserContext] = useContext(UserContext)
 	
 	const { onAuth } = props;
+	const type = props.type;
 	const history = useHistory();
+	const buttonLabel = type==="login"? "Login" : "Sign up";
+	let data = "";
+	
 	
 	const formSubmitHandler = e => {
 	console.log('The form is actually submited?')	
@@ -25,9 +31,20 @@ const Login = (props) => {
 	setSuMessage("")
 
     const genericErrorMessage = "Incorrect Username or Password."
-	const data = JSON.stringify({ username: email, password })
+	
+	if(type === "login") {
+		data = JSON.stringify({ username: email, password })
+	} else {
+		data = JSON.stringify({
+			username: email,
+			email: email,
+			password: password,
+			firstName: firstName,
+			lastName: lastName
+		})
+	}	
 	//POC WITH REDUX
-	onAuth('login', data)
+	onAuth(type, data)
 		.then(() => {
 		setIsSubmitting(false);
 		console.log("Logged In succesfully!!");
@@ -85,7 +102,33 @@ const Login = (props) => {
 	<h4>Welcome to the MTG App!!</h4>
 	  <div className="auth-form">
       <form onSubmit={formSubmitHandler} className="login">
-        <div>
+         {type==="signup" &&
+		<>	  
+		  <div>
+          <TextField
+			  required
+			  id="outlined-required"
+			  label="First Name"
+			  defaultValue="First Name"
+			  onChange={e => setFirstName(e.target.value)}
+			  value={firstName}
+			/>
+        </div>
+		  <br/>
+		 <div>
+          <TextField
+			  required
+			  id="outlined-required"
+			  label="Last Name"
+			  defaultValue="Last Name"
+			  onChange={e => setLastName(e.target.value)}
+			  value={lastName}
+			/>
+        </div>
+		  <br/>
+		  </>
+		  }
+		<div>
           <TextField
 			  required
 			  id="outlined-required"
@@ -107,7 +150,7 @@ const Login = (props) => {
         />
         </div>
 		  <br/>
-       <Button type="submit" size="large" color="primary" variant="contained" disabled={isSubmitting}>Login</Button>
+       <Button type="submit" size="large" color="primary" variant="contained" disabled={isSubmitting}>{buttonLabel}</Button>
       </form>
 	</div>	  
     </>

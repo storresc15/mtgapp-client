@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 import Grid from '@mui/material/Grid';
 
 
-const SingleDeckDisplay = ({deckId, date, name, description, username}) => {
+const SingleDeckDisplay = ({deckId, date, name, description, username, isCommunity}) => {
 	const strId = deckId; //JSON.stringify(deckId);
 return (
 	<>
 	<Grid item={true}  xs={12} sm={6} md={4} >	
-	<div className = "cardContainer">
+	<div className = "deckContainer">
 		<h2>{name}</h2>
 		<Link to={{
 				pathname: "/viewdeck/" + strId,
@@ -18,19 +18,18 @@ return (
 					owner: username,
 					name: name,
 					description: description,
-					date: date
+					date: date,
+					isCommunity: isCommunity	
 				}
 				}} >
-		<img src="https://media.magic.wizards.com/image_legacy_migration/magic/images/mtgcom/fcpics/making/mr224_back.jpg" alt={deckId} heigth="100" width="100"></img>
+		<img src="https://media.magic.wizards.com/image_legacy_migration/magic/images/mtgcom/fcpics/making/mr224_back.jpg" alt={deckId} heigth="150" width="150"></img>
 		</Link>		
-	<br></br>	
-	Created date:  
-	<Moment format="Do MM YYYY">
-	 {date}	
-	</Moment>
+	<br></br>
+	<br></br>
+	Created date:   {date}	
+
 	<p>Description: {description}</p>
-	<p>Owner: {username}</p>
-	<p>Deck Id: {deckId}</p>	
+	<p>Owner: {username}</p>	
 	</div>
 	</Grid>
 	</>

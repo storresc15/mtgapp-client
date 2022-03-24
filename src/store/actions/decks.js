@@ -7,6 +7,7 @@ export const loadDecks = decks => ({
 	decks
 });
 
+
 export const fetchMyDecks = () => {
 	return dispatch => {
 		return apiCall("get", "/decks/mydecks")
@@ -19,11 +20,46 @@ export const fetchMyDecks = () => {
 	};
 }
 
+
 //Create deck function
 export const createDeck = (data) => {
 	return dispatch => {
 		return new Promise((resolve, reject) => {
 		return apiCall("post", "/decks", data)
+			.then(res => {
+			dispatch(loadDecks(res)); //review response to return decks
+			resolve();
+		})
+		.catch(err => {
+			dispatch(addError(err));
+			reject();
+		})
+	})
+	}	
+}
+
+//Update deck function
+export const updateDeck = (id, data) => {
+	return dispatch => {
+		return new Promise((resolve, reject) => {
+		return apiCall("post", "/decks/"+id, data)
+			.then(res => {
+			dispatch(loadDecks(res)); //review response to return decks
+			resolve();
+		})
+		.catch(err => {
+			dispatch(addError(err));
+			reject();
+		})
+	})
+	}
+}
+
+//Delete deck function
+export const deleteDeck = (id) => {
+	return dispatch => {
+		return new Promise((resolve, reject) => {
+		return apiCall("delete", "/decks/"+id)
 			.then(res => {
 			dispatch(loadDecks(res)); //review response to return decks
 			resolve();

@@ -10,6 +10,8 @@ import { BrowserRouter as Router,
 	   Redirect} from 'react-router-dom';
 import { setAuthorizationToken, setCurrentUser } from "./store/actions/auth";
 import jwtDecode from "jwt-decode";
+import { ThemeProvider } from '@mui/material/styles';
+import theme from './theme'
 
 const store = configureStore()
 
@@ -25,7 +27,8 @@ if(localStorage.jwtToken) {
 
 function App() {
   return (
-	<Provider store={store}>  
+	<Provider store={store}>
+	<ThemeProvider theme={theme}>	  
 	<Router>
     <React.Fragment>  
     <div className="App">
@@ -34,6 +37,7 @@ function App() {
     </div>
 	</React.Fragment>
 	</Router>
+	</ThemeProvider>	
 	</Provider>	  
   );
 }

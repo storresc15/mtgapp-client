@@ -10,6 +10,7 @@ import { connect } from "react-redux";
 import { authUser } from "../store/actions/auth";
 import HomePage from "./HomePage";
 import MyDecks from "./MyDecks";
+import CommunityDecks from "./CommunityDecks";
 import DeckMain from './DeckMain';
 import withAuth from '../hocs/withAuth';
 
@@ -22,19 +23,20 @@ const Main = props => {
 	<>
 	<Route exact path="/" render={props => <HomePage currentUser={currentUser} {...props} />} />  
 	<Route path="/login">  
-	<Login errors={errors} onAuth={authUser}></Login>
+	<Login errors={errors} onAuth={authUser} type={"login"}></Login>
 	</Route>
 		
 	<Route path="/signup">  
-	<p>This should be the signup route</p>
+	<Login errors={errors} onAuth={authUser} type={"signup"}></Login>
 	</Route>		
 		
 	<Route path="/mydecks" component={withAuth(MyDecks)}>  
 		  { /*<MyDecks></MyDecks>*/ }
 	</Route>
 	
-	<Route path="/communitydecks">  
-	<p>Route for searching other people decks</p>
+	<Route path="/communitydecks" component={withAuth(CommunityDecks)}>  
+		  {/*<CommunityDecks></CommunityDecks> */}
+		  
 	</Route>
 		
 	<Route path="/cardsearch" component={withAuth(CardSearch)}>  
