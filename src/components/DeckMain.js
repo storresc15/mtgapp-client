@@ -1,9 +1,10 @@
-import React from "react";
+import React from 'react';
 import { useEffect, useState } from 'react';
-import { connect } from "react-redux";
-import { fetchCards } from "../store/actions/cards";
-import Moment from "react-moment";
-import { Link } from "react-router-dom";
+import { connect } from 'react-redux';
+import { fetchCards } from '../store/actions/cards';
+import { fetchSideDecks } from '../store/actions/sideDecks';
+import Moment from 'react-moment';
+import { Link } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
@@ -14,62 +15,79 @@ import DeckMainPanel from './DeckMainPanel';
 
 import { removeError } from '../store/actions/errors'; //POC for removing errors
 
-const DeckMain = props => {
-	
-	const { deckId, owner, name, description, date, isCommunity } = props.location.state;
-	const cards = props.cards;
-	const { errors } = props;
-	const [open, setOpen] = React.useState(true);
-	
-	useEffect(() => {
-		props.fetchCards(deckId);
-		console.log(cards);
-		console.log('The cards: ' + cards);
-		console.log('The deck id from deck main: ' + deckId);
-	},[])
-	
-return (
-	<>
-	{errors.message && <Stack sx={{ width: '100%' }} spacing={2}>
-      <Collapse in={open}>
-        <Alert
-		severity="error"	
-          action={
-            <IconButton
-              aria-label="close"
-              color="inherit"
-              size="small"
-              onClick={() => {
-				setOpen(false);		  
-				props.removeError();		  		  
-              }}
+const DeckMain = (props) => {
+  const { deckId, owner, name, description, date, isCommunity } =
+    props.location.state;
+  const cards = props.cards;
+  const sideDecks = props.sideDecks;
+  const { errors } = props;
+  const [open, setOpen] = React.useState(true);
+
+  useEffect(() => {
+    props.fetchCards(deckId);
+    props.fetchSideDecks(deckId);
+    console.log(cards);
+    console.log('The cards: ' + cards);
+    console.log('The deck id from deck main: ' + deckId);
+  }, []);
+
+  return (
+    <>
+      {errors.message && (
+        <Stack sx={{ width: '100%' }} spacing={2}>
+          <Collapse in={open}>
+            <Alert
+              severity="error"
+              action={
+                <IconButton
+                  aria-label="close"
+                  color="inherit"
+                  size="small"
+                  onClick={() => {
+                    setOpen(false);
+                    props.removeError();
+                  }}
+                >
+                  <CloseIcon fontSize="inherit" />
+                </IconButton>
+              }
+              sx={{ mb: 2 }}
             >
-              <CloseIcon fontSize="inherit" />
-            </IconButton>
-          }
-          sx={{ mb: 2 }}
-        >
-          {errors.message}
-        </Alert>
-      </Collapse> </Stack>}
+              {errors.message}
+            </Alert>
+          </Collapse>{' '}
+        </Stack>
+      )}
 
-
-	<Grid container spacing={1}>
-		<Grid item xs={12} md={12}>
-		<h1>{name}</h1>
-		<DeckMainPanel deckId={deckId} owner={owner} name={name} description={description} date={date} cards={cards} isCommunity={isCommunity}/>
-		</Grid>
-  </Grid>	
-	</>
-);
-
-}
+      <Grid container spacing={1}>
+        <Grid item xs={12} md={12}>
+          <h1>{name}</h1>
+          <DeckMainPanel
+            deckId={deckId}
+            owner={owner}
+            name={name}
+            description={description}
+            date={date}
+            cards={cards}
+            sideDecks={sideDecks}
+            isCommunity={isCommunity}
+          />
+        </Grid>
+      </Grid>
+    </>
+  );
+};
 
 function mapStateToProps(state) {
-	return {
-		errors: state.errors,
-		cards: state.cards
-	};
+  return {
+    errors: state.errors,
+    cards: state.cards,
+    sideDecks: state.sideDecks
+  };
 }
 
-export default connect(mapStateToProps, { fetchCards, removeError })(DeckMain);
+export default connect(mapStateToProps, {
+  fetchCards,
+  fetchSideDecks,
+  removeError
+})(DeckMain);
