@@ -13,7 +13,7 @@
   },
   "plugins": ["react"],
   "rules": {
-    "indent": ["warn", "tab"],
+    "indent": ["off", "tab"],
     "linebreak-style": ["warn", "unix"],
     "quotes": ["warn", "single"],
     "semi": ["warn", "always"]
