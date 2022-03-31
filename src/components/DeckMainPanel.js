@@ -91,8 +91,8 @@ export default function DeckMainPanel(props) {
         </TabPanel>
         <TabPanel value="5">
           <p>For Side Deck</p>
-          {sideDecks && <p>This deck does contain side decks</p>}
-          {!sideDecks && <p>This deck does not contain any side decks</p>}
+          {sideDecks.size > 0 && <p>Contains decks</p>}
+          {sideDecks <= 0 && <p>This deck does not contain any side decks</p>}
         </TabPanel>
       </TabContext>
     </Box>
