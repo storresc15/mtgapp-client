@@ -23,7 +23,12 @@ class CardSearch extends Component {
 
   makeApiCall = (searchInput) => {
     var searchUrl = `/cards/search/${searchInput}`;
-    fetch(searchUrl)
+    fetch(searchUrl, {
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      }
+    })
       .then((data) => data.json())
       .then((cards) => this.setState({ cards: cards }))
       .catch(function (error) {
