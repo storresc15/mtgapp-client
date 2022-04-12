@@ -14,7 +14,6 @@ const Login = (props) => {
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [userContext, setUserContext] = useContext(UserContext);
 
   const { onAuth } = props;
   const type = props.type;
@@ -52,6 +51,7 @@ const Login = (props) => {
         history.push({ pathname: '/' });
       })
       .catch((error) => {
+        console.log(error);
         setIsSubmitting(false);
         setError(genericErrorMessage);
       });

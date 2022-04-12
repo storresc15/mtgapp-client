@@ -5,7 +5,6 @@ import { fetchMyDecks } from '../store/actions/decks';
 import SingleDeckDisplay from './SingleDeckDisplay';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
-import DeckMain from './DeckMain';
 import NewDeck from './NewDeck';
 
 //To be deleted after the form component is finished
@@ -24,15 +23,6 @@ const MyDecks = (props) => {
   //Will need to fix to instead of returning the decklist let variable return the JSX and map it in there.
   const { myDecks } = props;
   console.log(myDecks);
-
-  //To be deleted
-  const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: theme.palette.text.secondary
-  }));
 
   return (
     <>

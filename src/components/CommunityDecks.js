@@ -5,8 +5,6 @@ import { fetchCommunityDecks } from '../store/actions/communityDecks';
 import SingleDeckDisplay from './SingleDeckDisplay';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
-import DeckMain from './DeckMain';
-import NewDeck from './NewDeck';
 
 //To be deleted after the form component is finished
 import { styled } from '@mui/material/styles';
@@ -20,15 +18,6 @@ const CommunityDecks = (props) => {
   //Will need to fix to instead of returning the decklist let variable return the JSX and map it in there.
   const { communityDecks } = props;
   console.log(communityDecks);
-
-  //To be deleted
-  const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: theme.palette.text.secondary
-  }));
 
   return (
     <>

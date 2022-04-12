@@ -8,12 +8,7 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Redirect
-} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router';
 import { logout } from '../store/actions/auth';

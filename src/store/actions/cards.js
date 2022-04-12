@@ -1,6 +1,6 @@
 import { apiCall } from '../../services/api';
-import { addError, removeError } from './errors';
-import { GET_CARDS, SAVE_CARD_TO_DECK } from '../actionTypes';
+import { addError } from './errors';
+import { GET_CARDS } from '../actionTypes';
 
 export const loadCards = (cards) => ({
   type: GET_CARDS,

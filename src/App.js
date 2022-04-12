@@ -4,12 +4,7 @@ import { configureStore } from './store';
 import './App.css';
 import Header from './components/Header';
 import Main from './components/Main';
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Redirect
-} from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { setAuthorizationToken, setCurrentUser } from './store/actions/auth';
 import jwtDecode from 'jwt-decode';
 import { ThemeProvider } from '@mui/material/styles';

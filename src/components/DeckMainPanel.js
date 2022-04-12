@@ -65,6 +65,7 @@ export default function DeckMainPanel(props) {
             <Grid container spacing={1} columns={{ xs: 4, sm: 8, md: 12 }}>
               {cards.map((m) => (
                 <SingleCardDisplay
+                  key={m.name}
                   name={m.name}
                   colors={m.colors}
                   type={m.type}

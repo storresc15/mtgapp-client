@@ -10,8 +10,6 @@ import Typography from '@mui/material/Typography';
 import CircularProgress from '@mui/material/CircularProgress';
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
-import Checkbox from '@mui/material/Checkbox';
-import { useHistory } from 'react-router';
 import { removeCardFromDeck } from '../store/actions/cards';
 
 const style = {
@@ -50,7 +48,6 @@ const RemoveCard = (props) => {
     setIsSubmitting(true);
     setError('');
 
-    const genericErrorMessage = 'Something went wrong! Please try again later.';
     //Information about Form
     //const fileInput = document.querySelector('input[type="file"]').files[0] ;
     const formData = new FormData();
@@ -72,6 +69,7 @@ const RemoveCard = (props) => {
       })
       .catch((error) => {
         console.log('We got an error');
+        console.log(error);
         setIsSubmitting(false);
       });
   };
