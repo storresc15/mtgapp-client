@@ -29,7 +29,7 @@ class CardSearch extends Component {
         Accept: 'application/json'
       }
     })
-      //.then((data) => data.json())
+      .then((data) => data.json())
       .then((cards) => this.setState({ cards: cards }))
       .catch(function (error) {
         console.log('Fetch error: ' + error.message);
