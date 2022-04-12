@@ -6,10 +6,6 @@ import SingleDeckDisplay from './SingleDeckDisplay';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 
-//To be deleted after the form component is finished
-import { styled } from '@mui/material/styles';
-import Paper from '@mui/material/Paper';
-
 const CommunityDecks = (props) => {
   useEffect(() => {
     props.fetchCommunityDecks();

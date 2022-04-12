@@ -7,10 +7,6 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import NewDeck from './NewDeck';
 
-//To be deleted after the form component is finished
-import { styled } from '@mui/material/styles';
-import Paper from '@mui/material/Paper';
-
 const MyDecks = (props) => {
   /*state = {
 	userId: "613e6c983126ff0e8",},fe1feb"

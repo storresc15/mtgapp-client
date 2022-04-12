@@ -1,10 +1,9 @@
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 import { useHistory } from 'react-router';
-import { UserContext } from '../context/UserContext';
 
 const Login = (props) => {
   const [isSubmitting, setIsSubmitting] = useState(false);

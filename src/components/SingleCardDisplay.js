@@ -73,7 +73,7 @@ const SingleCardDisplay = (props) => {
         //setTimeout(() => {props.fetchCards(props.deckId)}, 1000);
       })
       .catch((error) => {
-        //THE ERROR SHOULD GO HERE
+        console.log(error);
         console.log('We got error message');
         setIsSubmitting(false);
       });
