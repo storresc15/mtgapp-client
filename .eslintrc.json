@@ -16,6 +16,7 @@
     "indent": ["off", "tab"],
     "linebreak-style": ["warn", "unix"],
     "quotes": ["warn", "single"],
-    "semi": ["warn", "always"]
+    "semi": ["warn", "always"],
+    "react/prop-types": "off"
   }
 }
