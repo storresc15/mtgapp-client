@@ -22,7 +22,7 @@ class CardSearch extends Component {
   };
 
   makeApiCall = (searchInput) => {
-    var searchUrl = `/cards/search/${searchInput}`;
+    var searchUrl = `/api/cards/search/${searchInput}`;
     fetch(searchUrl, {
       headers: {
         'Content-Type': 'application/json',
