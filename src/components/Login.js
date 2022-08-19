@@ -3,7 +3,7 @@ import TextField from '@mui/material/TextField';
 import React, { useState } from 'react';
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
-import { useHistory } from 'react-router';
+import { useHistory } from 'react-router-dom';
 
 const Login = (props) => {
   const [isSubmitting, setIsSubmitting] = useState(false);

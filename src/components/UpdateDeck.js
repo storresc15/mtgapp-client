@@ -11,7 +11,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 import Checkbox from '@mui/material/Checkbox';
-import { useHistory } from 'react-router';
+import { useHistory } from 'react-router-dom';
 import { updateDeck } from '../store/actions/decks';
 
 const style = {

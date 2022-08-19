@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography';
 import CircularProgress from '@mui/material/CircularProgress';
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
-import { useHistory } from 'react-router';
+import { useHistory } from 'react-router-dom';
 import { deleteDeck } from '../store/actions/decks';
 
 const style = {
