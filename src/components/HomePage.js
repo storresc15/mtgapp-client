@@ -4,7 +4,7 @@ const HomePage = ({ currentUser }) => {
   if (!currentUser.isAuthenticated) {
     return (
       <div>
-        <h1>Hello!</h1>
+        <h1>Hello Planeswalker!</h1>
         <h4>Welcome to the MTG App!!</h4>
       </div>
     );
