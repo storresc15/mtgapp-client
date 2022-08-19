@@ -13,6 +13,11 @@ export function apiCall(method, path, data) {
   console.log('The Path: ' + path);
   console.log('The Data: ' + data);
 
+  let envPath =
+    process.env.NODE_ENV == 'development' && path.replace('/api', '');
+  console.log('The new Path: ' + envPath);
+  console.log('----The environment: ' + process.env.NODE_ENV);
+
   //Our own code to test config TO BE DELETED OR UPDATED
   let config = {
     headers: {
@@ -21,7 +26,7 @@ export function apiCall(method, path, data) {
     withCredentials: true
   };
   return new Promise((resolve, reject) => {
-    return axios[method](path, data, config)
+    return axios[method](envPath, data, config)
       .then((res) => {
         return resolve(res.data);
       })

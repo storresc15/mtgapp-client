@@ -59,7 +59,7 @@ export default function DeckMainPanel(props) {
         </TabPanel>
         <TabPanel value="2">
           <h3>Cards: </h3>
-          {cards && <p>Cards are contained</p>}
+          {/* cards && <p>Cards are contained</p> */}
           <br></br>
           <Container maxWidth="md">
             <Grid container spacing={1} columns={{ xs: 4, sm: 8, md: 12 }}>
