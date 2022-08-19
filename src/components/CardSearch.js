@@ -37,11 +37,11 @@ class CardSearch extends Component {
   };
 
   render() {
-    let deckIdst = this.state.deckId;
-    console.log(deckIdst);
+    //let deckIdst = this.state.deckId;
+    //console.log(deckIdst);
     return (
       <div id="main">
-        <h1>Search Card to add to your Deck: {this.state.deckId}!</h1>
+        <h1>Search Card to add to your Deck!</h1>
         {/*<input
           name="text"
           type="text"
@@ -85,7 +85,7 @@ class CardSearch extends Component {
                       types={card.types}
                       rarity={card.rarity}
                       manaCost={card.manaCost}
-                      displaySave={true}
+                      displaySave={this.props.deckId}
                     />
                   </div>
                 ))}
