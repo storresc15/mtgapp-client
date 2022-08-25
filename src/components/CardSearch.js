@@ -55,7 +55,7 @@ class CardSearch extends Component {
         />*/}
         <TextField
           label="Search"
-          defaultValue="Search"
+          //defaultValue="Search"
           onChange={(event) => this.handleOnChange(event)}
           value={this.state.searchValue}
         />
