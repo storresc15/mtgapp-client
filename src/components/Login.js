@@ -110,9 +110,9 @@ const Login = (props) => {
               <div>
                 <TextField
                   required
-                  id="outlined-required"
+                  id="outline-first-name" //"outlined-required"
                   label="First Name"
-                  defaultValue="First Name"
+                  //defaultValue="First Name"
                   onChange={(e) => setFirstName(e.target.value)}
                   value={firstName}
                 />
@@ -121,9 +121,9 @@ const Login = (props) => {
               <div>
                 <TextField
                   required
-                  id="outlined-required"
+                  id="outline-last-name" //"outlined-required"
                   label="Last Name"
-                  defaultValue="Last Name"
+                  //defaultValue="Last Name"
                   onChange={(e) => setLastName(e.target.value)}
                   value={lastName}
                 />
@@ -136,7 +136,6 @@ const Login = (props) => {
               required
               id="outlined-required"
               label="Email"
-              defaultValue="Email"
               onChange={(e) => setEmail(e.target.value)}
               value={email}
             />
