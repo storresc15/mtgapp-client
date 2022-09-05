@@ -23,9 +23,12 @@ class CardSearch extends Component {
 
   makeApiCall = (searchInput) => {
     var searchUrl = `/api/cards/search/${searchInput}`;
+    let newSearchUrl = searchUrl;
 
-    let newSearchUrl =
-      process.env.NODE_ENV == 'development' && searchUrl.replace('/api', '');
+    if (process.env.NODE_ENV == 'development') {
+      newSearchUrl = searchUrl.replace('/api', '');
+    }
+    console.log('The search URL: ' + newSearchUrl);
 
     fetch(newSearchUrl, {
       headers: {
