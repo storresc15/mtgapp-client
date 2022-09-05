@@ -13,8 +13,11 @@ export function apiCall(method, path, data) {
   console.log('The Path: ' + path);
   console.log('The Data: ' + data);
 
-  let envPath =
-    process.env.NODE_ENV == 'development' && path.replace('/api', '');
+  let envPath = path;
+
+  if (process.env.NODE_ENV == 'development') {
+    let envPath = path.replace('/api', '');
+  }
   console.log('The new Path: ' + envPath);
   console.log('----The environment: ' + process.env.NODE_ENV);
 
