@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+//To be reviewed due to warnings on component will mount
 export default function withAuth(ComponentToBeRendered) {
   class Authenticate extends Component {
     UNSAFE_componentWillMount() {
