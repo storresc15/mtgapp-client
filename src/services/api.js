@@ -16,7 +16,7 @@ export function apiCall(method, path, data) {
   let envPath = path;
 
   if (process.env.NODE_ENV == 'development') {
-    let envPath = path.replace('/api', '');
+    envPath = path.replace('/api', '');
   }
   console.log('The new Path: ' + envPath);
   console.log('----The environment: ' + process.env.NODE_ENV);
