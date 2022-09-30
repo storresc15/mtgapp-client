@@ -274,67 +274,6 @@ const NewDeck = (props) => {
             </form>
             {isSubmitting && <CircularProgress />}
           </Box>
-
-          {/*  	
-          <Box sx={style}>
-            {error && (
-              <Stack sx={{ width: '100%' }} spacing={2}>
-                <Alert severity="success"></Alert>
-              </Stack>
-            )}
-            <Typography id="transition-modal-title" variant="h6" component="h2">
-              Create Deck
-            </Typography>
-            <br></br>
-            <form onSubmit={formSubmitHandler}>
-              <div className="textFieldsInModal">
-                <TextField
-                  required
-                  id="outlined-required"
-                  label="Title"
-                  onChange={(e) => setTitle(e.target.value)}
-                  value={title}
-                />
-                <br></br>
-                <br></br>
-                <TextField
-                  id="standard-multiline-static"
-                  label="Description"
-                  multiline
-                  rows={5}
-                  variant="standard"
-                  onChange={(e) => setDescription(e.target.value)}
-                  value={description}
-                />
-              </div>
-              <br></br>
-              <br></br>
-              <p>Public?</p>
-              <Checkbox
-                checked={checked}
-                onChange={() => setChecked(!checked)}
-                inputProps={{ 'aria-label': 'controlled' }}
-              />
-              <br></br>
-              <br></br>
-              <div>
-                <Button
-                  type="submit"
-                  size="large"
-                  color="primary"
-                  variant="contained"
-                  disabled={isSubmitting}
-                >
-                  {' '}
-                  Save{' '}
-                </Button>
-                {// <Button onclick={setOpen(false)} size="large" color="secondary" variant="contained" > Cancel </Button> }
-                <br></br>
-              </div>
-            </form>
-            {isSubmitting && <CircularProgress />}
-          </Box>
-			*/}
         </Fade>
       </Modal>
     </div>
