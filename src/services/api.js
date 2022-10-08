@@ -9,19 +9,18 @@ export function setTokenHeader(token) {
 }
 
 export function apiCall(method, path, data) {
-  console.log('The Method: ' + method);
-  console.log('The Path: ' + path);
-  console.log('The Data: ' + data);
+  //console.log('The Method: ' + method);
+  //console.log('The Path: ' + path);
+  //console.log('The Data: ' + data);
 
   let envPath = path;
 
   if (process.env.NODE_ENV == 'development') {
     envPath = path.replace('/api', '');
   }
-  console.log('The new Path: ' + envPath);
-  console.log('----The environment: ' + process.env.NODE_ENV);
+  //console.log('The new Path: ' + envPath);
+  //console.log('----The environment: ' + process.env.NODE_ENV);
 
-  //Our own code to test config TO BE DELETED OR UPDATED
   let config = {
     headers: {
       'Content-Type': 'application/json'
@@ -34,6 +33,10 @@ export function apiCall(method, path, data) {
         return resolve(res.data);
       })
       .catch((err) => {
+        //If error 401 unauth then send Session Expired error message
+        if (err.response.status == 401) {
+          return reject('Session Expired');
+        }
         return reject(err.response.data.error);
       });
   });
