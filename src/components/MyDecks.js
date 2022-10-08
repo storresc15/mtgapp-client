@@ -5,6 +5,12 @@ import { fetchMyDecks } from '../store/actions/decks';
 import SingleDeckDisplay from './SingleDeckDisplay';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
+import Alert from '@mui/material/Alert';
+import Stack from '@mui/material/Stack';
+import Collapse from '@mui/material/Collapse';
+import { useHistory } from 'react-router-dom';
+import { logout } from '../store/actions/auth';
+
 import NewDeck from './NewDeck';
 
 const MyDecks = (props) => {
@@ -12,16 +18,34 @@ const MyDecks = (props) => {
 	userId: "613e6c983126ff0e8",},fe1feb"
 	deckId: ""  
   };*/
+  const { myDecks } = props;
+  const { errors } = props;
+  const history = useHistory();
+
   useEffect(() => {
-    props.fetchMyDecks();
+    if (errors && errors.message == 'Session Expired') {
+      props.logout();
+      history.push({ pathname: '/' });
+    } else {
+      props.fetchMyDecks();
+    }
+    console.log(errors);
   }, []);
 
   //Will need to fix to instead of returning the decklist let variable return the JSX and map it in there.
-  const { myDecks } = props;
   console.log(myDecks);
 
   return (
     <>
+      {errors.message && (
+        <Stack sx={{ width: '100%' }} spacing={2}>
+          <Collapse in={open}>
+            <Alert severity="error" sx={{ mb: 2 }}>
+              {errors.message}
+            </Alert>
+          </Collapse>{' '}
+        </Stack>
+      )}
       <h1>My Decks</h1>
       <br></br>
 
@@ -52,8 +76,9 @@ const MyDecks = (props) => {
 
 function mapStateToProps(state) {
   return {
+    errors: state.errors,
     myDecks: state.decks
   };
 }
 
-export default connect(mapStateToProps, { fetchMyDecks })(MyDecks);
+export default connect(mapStateToProps, { fetchMyDecks, logout })(MyDecks);

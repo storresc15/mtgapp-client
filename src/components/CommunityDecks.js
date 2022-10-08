@@ -5,15 +5,25 @@ import { fetchCommunityDecks } from '../store/actions/communityDecks';
 import SingleDeckDisplay from './SingleDeckDisplay';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
+import { useHistory } from 'react-router-dom';
+
+import { logout } from '../store/actions/auth';
 
 const CommunityDecks = (props) => {
+  const { errors } = props;
+  const history = useHistory();
+  const { communityDecks } = props;
+
   useEffect(() => {
-    props.fetchCommunityDecks();
+    if (errors && errors.message == 'Session Expired') {
+      props.logout();
+      history.push({ pathname: '/' });
+    } else {
+      props.fetchCommunityDecks();
+    }
   }, []);
 
-  //Will need to fix to instead of returning the decklist let variable return the JSX and map it in there.
-  const { communityDecks } = props;
-  console.log(communityDecks);
+  //console.log(communityDecks);
 
   return (
     <>
@@ -45,10 +55,11 @@ const CommunityDecks = (props) => {
 
 function mapStateToProps(state) {
   return {
+    errors: state.errors,
     communityDecks: state.communityDecks
   };
 }
 
-export default connect(mapStateToProps, { fetchCommunityDecks })(
+export default connect(mapStateToProps, { fetchCommunityDecks, logout })(
   CommunityDecks
 );
