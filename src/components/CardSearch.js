@@ -45,7 +45,7 @@ class CardSearch extends Component {
 
   render() {
     //let deckIdst = this.state.deckId;
-    //console.log(deckIdst);
+    //console.log(deckIdst); remove
     return (
       <div id="main">
         <h1>Search Card to add to your Deck!</h1>
