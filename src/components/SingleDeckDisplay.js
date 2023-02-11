@@ -32,7 +32,6 @@ const SingleDeckDisplay = ({
             <img
               src="https://media.magic.wizards.com/image_legacy_migration/magic/images/mtgcom/fcpics/making/mr224_back.jpg"
               alt={deckId}
-              heigth="150"
               width="150"
             ></img>
           </Link>
