@@ -11,6 +11,7 @@ import Grid from '@mui/material/Grid';
 import CardSearch from './CardSearch';
 import UpdateDeck from './UpdateDeck';
 import RemoveDeck from './RemoveDeck';
+import DownloadDeckAsCSV from './DownloadDeckAsCSV';
 
 export default function DeckMainPanel(props) {
   const [value, setValue] = React.useState('1');
@@ -38,15 +39,21 @@ export default function DeckMainPanel(props) {
           </TabList>
         </Box>
         <TabPanel value="1">
-          <p>Description: {description}</p>
-          <p>Owner: {owner}</p>
-          <p>Deck Id: {deckId}</p>
-          Created date:
-          <Moment format="Do MM YYYY">{date}</Moment>
-          <br></br>
+          <div className="deckDetails">
+          <p><strong>Description:</strong> {description}</p>
+          <p><strong>Owner:</strong> {owner}</p>
+          <p><strong>Deck Id:</strong> {deckId}</p>
+          <p><strong>Created date: </strong>
+          <Moment format="MMMM Do, YYYY">{date}</Moment></p>
+          
           <br></br>
           {!isCommunity && (
             <>
+              <DownloadDeckAsCSV 
+              data = {cards}
+              fileName = {name}>
+              </DownloadDeckAsCSV>
+              <br></br>
               <UpdateDeck
                 name={name}
                 description={description}
@@ -56,6 +63,7 @@ export default function DeckMainPanel(props) {
               <RemoveDeck name={name} deckId={deckId}></RemoveDeck>
             </>
           )}
+          </div>
         </TabPanel>
         <TabPanel value="2">
           <h3>Cards: </h3>
