@@ -17,12 +17,11 @@ export default function DeckMainPanel(props) {
   const [value, setValue] = React.useState('1');
   const cards = props.cards;
   const sideDecks = props.sideDecks;
+  const reviews = props.reviews;
   const { deckId, owner, name, description, date, isCommunity } = props;
-  console.log('This deck is from community?' + isCommunity);
   const displayRemoveCards = isCommunity ? false : true;
   const handleChange = (event, newValue) => {
     //testing deckid
-    console.log('The deck id from deckmainpanel: ' + deckId);
     setValue(newValue);
   };
 
@@ -66,7 +65,7 @@ export default function DeckMainPanel(props) {
           </div>
         </TabPanel>
         <TabPanel value="2">
-          <h3>Cards: </h3>
+          <h1>Cards: </h1>
           {/* cards && <p>Cards are contained</p> */}
           <br></br>
           <Container maxWidth="md">
@@ -96,7 +95,16 @@ export default function DeckMainPanel(props) {
           <CardSearch deckId={deckId}></CardSearch>
         </TabPanel>
         <TabPanel value="4">
-          <p>For Reviews</p>
+          <h1>Reviews</h1>
+          { reviews && <p>Reviews are contained</p>}
+          { reviews.map((m) => (
+            <>
+            <div key={m.id}>
+            <p key={m.id}><strong>{m.user.firstName}</strong></p>
+            <p key={m.id}>{m.body}</p>
+            </div>
+            </>
+              ))}
         </TabPanel>
         <TabPanel value="5">
           <p>For Side Deck</p>

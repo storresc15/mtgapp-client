@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { fetchCards } from '../store/actions/cards';
 import { fetchSideDecks } from '../store/actions/sideDecks';
+import { fetchReviews } from '../store/actions/reviews';
 import Grid from '@mui/material/Grid';
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
@@ -18,15 +19,14 @@ const DeckMain = (props) => {
     props.location.state;
   const cards = props.cards;
   const sideDecks = props.sideDecks;
+  const reviews = props.reviews;
   const { errors } = props;
   const [open, setOpen] = React.useState(true);
 
   useEffect(() => {
     props.fetchCards(deckId);
     props.fetchSideDecks(deckId);
-    console.log(cards);
-    console.log('The cards: ' + cards);
-    console.log('The deck id from deck main: ' + deckId);
+    props.fetchReviews(deckId);
   }, []);
 
   return (
@@ -68,6 +68,7 @@ const DeckMain = (props) => {
             date={date}
             cards={cards}
             sideDecks={sideDecks}
+            reviews={reviews}
             isCommunity={isCommunity}
           />
         </Grid>
@@ -80,12 +81,14 @@ function mapStateToProps(state) {
   return {
     errors: state.errors,
     cards: state.cards,
-    sideDecks: state.sideDecks
+    sideDecks: state.sideDecks,
+    reviews: state.reviews
   };
 }
 
 export default connect(mapStateToProps, {
   fetchCards,
   fetchSideDecks,
+  fetchReviews,
   removeError
 })(DeckMain);
