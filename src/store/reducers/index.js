@@ -5,6 +5,7 @@ import decks from './decks';
 import cards from './cards';
 import communityDecks from './communityDecks';
 import sideDecks from './sideDecks';
+import reviews from './reviews';
 
 const rootReducer = combineReducers({
   currentUser,
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
   communityDecks,
   decks,
   sideDecks,
-  cards
+  cards,
+  reviews
 });
 
 export default rootReducer;

@@ -7,3 +7,5 @@ export const GET_CURRENT_DECK = 'GET_CURRENT_DECK';
 export const GET_CARDS = 'GET_CARDS';
 export const SAVE_CARD_TO_DECK = 'SAVE_CARD_TO_DECK';
 export const GET_SIDEDECKS = 'GET_SIDEDECKS';
+export const GET_REVIEWS = 'GET_REVIEWS';
+export const ADD_REVIEW = 'ADD_REVIEW';
