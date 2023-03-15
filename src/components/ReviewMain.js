@@ -13,6 +13,7 @@ const ReviewMain = ({
   return (
     <>
     <Grid item={true} xs={12} sm={12} md={6}>
+
       <Card sx={{ maxWidth: 845 }}>
       <CardActionArea>
         <CardMedia
@@ -33,6 +34,7 @@ const ReviewMain = ({
     </Card>
     </Grid>
     </>
+    
   );
 };
 export default ReviewMain;
