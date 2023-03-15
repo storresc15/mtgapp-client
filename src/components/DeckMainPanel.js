@@ -12,6 +12,7 @@ import CardSearch from './CardSearch';
 import UpdateDeck from './UpdateDeck';
 import RemoveDeck from './RemoveDeck';
 import DownloadDeckAsCSV from './DownloadDeckAsCSV';
+import ReviewMain from './ReviewMain';
 
 export default function DeckMainPanel(props) {
   const [value, setValue] = React.useState('1');
@@ -69,7 +70,7 @@ export default function DeckMainPanel(props) {
           {/* cards && <p>Cards are contained</p> */}
           <br></br>
           <Container maxWidth="md">
-            <Grid container spacing={1} columns={{ xs: 4, sm: 8, md: 12 }}>
+            <Grid container spacing={4} columns={{ xs: 4, sm: 8, md: 16 }} >
               {cards.map((m) => (
                 <SingleCardDisplay
                   key={m.name}
@@ -96,15 +97,22 @@ export default function DeckMainPanel(props) {
         </TabPanel>
         <TabPanel value="4">
           <h1>Reviews</h1>
-          { reviews && <p>Reviews are contained</p>}
-          { reviews.map((m) => (
-            <>
-            <div key={m.id}>
-            <p key={m.id}><strong>{m.user.firstName}</strong></p>
-            <p key={m.id}>{m.body}</p>
-            </div>
-            </>
-              ))}
+          <Container maxWidth="md">
+        {/* End hero unit */}
+        <Grid container spacing={1}>
+          <Grid item xs={12}>
+            <p>Add Review</p>
+          </Grid>
+          {/*isSubmitting && <CircularProgress />*/}
+          {reviews.map((m) => (
+            <ReviewMain
+              key={m._id}
+              user={m.user.firstName}
+              description={m.body}
+            />
+          ))}
+        </Grid>
+      </Container>
         </TabPanel>
         <TabPanel value="5">
           <p>For Side Deck</p>

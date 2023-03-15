@@ -53,16 +53,18 @@
 }
 
 .cardContainer {
-	inline-size: 235px;
-    overflow-wrap: break-word;
-	margin: .5rem;
-	border-style: solid;
+	inline-size: 216px;
+  overflow-wrap: break-word;
+	margin: 0;
 	background-color: rgb(192,192,192,.3);
 	border-radius: 25px;
 }
 
 .cardContainer img {
 	max-height: 300px;
+}
+.cardContainer b {
+	font-size: 13px;
 }
 .singleCardHeader {
 	margin-bottom: 0;
