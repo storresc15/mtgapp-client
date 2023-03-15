@@ -40,29 +40,37 @@ export default function DeckMainPanel(props) {
         </Box>
         <TabPanel value="1">
           <div className="deckDetails">
-          <p><strong>Description:</strong> {description}</p>
-          <p><strong>Owner:</strong> {owner}</p>
-          <p><strong>Deck Id:</strong> {deckId}</p>
-          <p><strong>Created date: </strong>
-          <Moment format="MMMM Do, YYYY">{date}</Moment></p>
-          
-          <br></br>
-          {!isCommunity && (
-            <>
-              <DownloadDeckAsCSV 
-              data = {cards}
-              fileName = {name}>
-              </DownloadDeckAsCSV>
-              <br></br>
-              <UpdateDeck
-                name={name}
-                description={description}
-                deckId={deckId}
-              ></UpdateDeck>
-              <br></br>
-              <RemoveDeck name={name} deckId={deckId}></RemoveDeck>
-            </>
-          )}
+            <p>
+              <strong>Description:</strong> {description}
+            </p>
+            <p>
+              <strong>Owner:</strong> {owner}
+            </p>
+            <p>
+              <strong>Deck Id:</strong> {deckId}
+            </p>
+            <p>
+              <strong>Created date: </strong>
+              <Moment format="MMMM Do, YYYY">{date}</Moment>
+            </p>
+
+            <br></br>
+            {!isCommunity && (
+              <>
+                <DownloadDeckAsCSV
+                  data={cards}
+                  fileName={name}
+                ></DownloadDeckAsCSV>
+                <br></br>
+                <UpdateDeck
+                  name={name}
+                  description={description}
+                  deckId={deckId}
+                ></UpdateDeck>
+                <br></br>
+                <RemoveDeck name={name} deckId={deckId}></RemoveDeck>
+              </>
+            )}
           </div>
         </TabPanel>
         <TabPanel value="2">
@@ -70,7 +78,7 @@ export default function DeckMainPanel(props) {
           {/* cards && <p>Cards are contained</p> */}
           <br></br>
           <Container maxWidth="md">
-            <Grid container spacing={4} columns={{ xs: 4, sm: 8, md: 16 }} >
+            <Grid container spacing={4} columns={{ xs: 4, sm: 8, md: 16 }}>
               {cards.map((m) => (
                 <SingleCardDisplay
                   key={m.name}
@@ -98,21 +106,21 @@ export default function DeckMainPanel(props) {
         <TabPanel value="4">
           <h1>Reviews</h1>
           <Container maxWidth="md">
-        {/* End hero unit */}
-        <Grid container spacing={1}>
-          <Grid item xs={12}>
-            <p>Add Review</p>
-          </Grid>
-          {/*isSubmitting && <CircularProgress />*/}
-          {reviews.map((m) => (
-            <ReviewMain
-              key={m._id}
-              user={m.user.firstName}
-              description={m.body}
-            />
-          ))}
-        </Grid>
-      </Container>
+            {/* End hero unit */}
+            <Grid container spacing={1}>
+              <Grid item xs={12}>
+                <p>Add Review</p>
+              </Grid>
+              {/*isSubmitting && <CircularProgress />*/}
+              {reviews.map((m) => (
+                <ReviewMain
+                  key={m._id}
+                  user={m.user.firstName}
+                  description={m.body}
+                />
+              ))}
+            </Grid>
+          </Container>
         </TabPanel>
         <TabPanel value="5">
           <p>For Side Deck</p>
