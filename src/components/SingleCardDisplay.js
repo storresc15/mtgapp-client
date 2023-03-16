@@ -32,7 +32,6 @@ const SingleCardDisplay = (props) => {
   }));
 
   const handleSave = () => {
-    console.log('the deck id from handle save: ' + props.deckId);
     setIsSubmitting(true);
     saveCardAPICall();
   };
@@ -64,17 +63,14 @@ const SingleCardDisplay = (props) => {
     //console.log('the deck id: ' + this.props.deckId);
 
     //Handle the saving of the card to the deck
-    console.log('Saving this card: ' + data.name);
     saveCardsToDeck(JSON.stringify(data), props.deckId)
       .then(() => {
-        console.log('On the then statement on single card display');
         setOpen(true);
         setIsSubmitting(false);
         //setTimeout(() => {props.fetchCards(props.deckId)}, 1000);
       })
       .catch((error) => {
         console.log(error);
-        console.log('We got error message');
         setIsSubmitting(false);
       });
   };

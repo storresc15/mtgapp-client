@@ -9,17 +9,11 @@ export function setTokenHeader(token) {
 }
 
 export function apiCall(method, path, data) {
-  //console.log('The Method: ' + method);
-  //console.log('The Path: ' + path);
-  //console.log('The Data: ' + data);
-
   let envPath = path;
 
   if (process.env.NODE_ENV == 'development') {
     envPath = path.replace('/api', '');
   }
-  //console.log('The new Path: ' + envPath);
-  //console.log('----The environment: ' + process.env.NODE_ENV);
 
   let config = {
     headers: {

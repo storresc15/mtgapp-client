@@ -68,7 +68,6 @@ const RemoveCard = (props) => {
         //history.push({ pathname:  "/mydecks" });
       })
       .catch((error) => {
-        console.log('We got an error');
         console.log(error);
         setIsSubmitting(false);
       });

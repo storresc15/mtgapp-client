@@ -21,7 +21,6 @@ const Login = (props) => {
   let data = '';
 
   const formSubmitHandler = (e) => {
-    console.log('The form is actually submited?');
     e.preventDefault();
     setIsSubmitting(true);
     setError('');
@@ -44,8 +43,6 @@ const Login = (props) => {
     onAuth(type, data)
       .then(() => {
         setIsSubmitting(false);
-        console.log('Logged In succesfully!!');
-        console.log(localStorage.getItem('jwtToken'));
         setSuMessage('Success!');
         history.push({ pathname: '/' });
       })
@@ -54,39 +51,6 @@ const Login = (props) => {
         setIsSubmitting(false);
         setError(genericErrorMessage);
       });
-    /*
-    fetch('/users/login', {
-      method: "POST",
-      credentials: "include",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username: email, password }),
-    })
-      .then(async response => {
-        setIsSubmitting(false)
-        if (!response.ok) {
-          if (response.status === 400) {
-            setError("Please fill all the fields correctly!")
-          } else if (response.status === 401) {
-            setError("Invalid email and password combination.")
-          } else {
-            setError(genericErrorMessage)
-          }
-        } else {
-          const data = await response.json()
-		  //remove the following token console
-		  //console.log('The login was succesfull!!')
-		  //console.log('The token: ' + data.token);
-			setSuMessage("Success!")
-          setUserContext(oldValues => {
-            return { ...oldValues, token: data.token }
-          })
-        }
-      })
-      .catch(error => {
-        setIsSubmitting(false)
-        setError(genericErrorMessage)
-      })
-		*/
   };
 
   return (
