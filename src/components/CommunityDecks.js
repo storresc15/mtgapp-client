@@ -23,8 +23,6 @@ const CommunityDecks = (props) => {
     }
   }, []);
 
-  //console.log(communityDecks);
-
   return (
     <>
       <h1>Community Decks! Welcome!!</h1>

@@ -76,7 +76,6 @@ const NewDeck = (props) => {
         handleClose();
       })
       .catch((error) => {
-        console.log('We got an error');
         console.log(error);
         setIsSubmitting(false);
       });

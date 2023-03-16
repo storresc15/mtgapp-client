@@ -32,9 +32,6 @@ const MyDecks = (props) => {
     console.log(errors);
   }, []);
 
-  //Will need to fix to instead of returning the decklist let variable return the JSX and map it in there.
-  console.log(myDecks);
-
   return (
     <>
       {errors.message && (
